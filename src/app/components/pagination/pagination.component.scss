@@ -1,0 +1,25 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+
+    li {
+        list-style: none;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+        padding: 5px;
+
+        &.active {
+            background: gray;
+        }
+
+        &:hover {
+            background: gray;
+            transition: background .2s ease-in-out;
+        }
+
+        a {
+            padding: 10px;
+        }
+    }
+}

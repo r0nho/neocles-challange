@@ -1,0 +1,31 @@
+<div class="search">
+  Search:
+  <form [formGroup]="form">
+    <input type="text" formControlName="filterInput">
+  </form>
+</div>
+
+<table class="custom-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Cool column</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of filteredData | slice: ((options.page - 1) * options.itemsPerPage) : (options.page * options.itemsPerPage)">
+      <th>{{ entry.name }}</th>
+      <td>{{ entry.description }}</td>
+      <td>{{ entry.status }}</td>
+      <td>
+        <!-- I'm a very important column for whatever reasons, so please do not remove me -->
+        <div *ngFor="let x of emptyArray"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-pagination [hidden]="filteredData.length === 0" [offset]="options.offSet" [limit]="options.itemsPerPage"
+  [size]="options.maxPages" (pageChange)="onPageChange($event)"></app-pagination>
